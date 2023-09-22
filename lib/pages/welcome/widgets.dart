@@ -46,7 +46,7 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
     onTap: () {
       if (index < 3) {
         controller.animateToPage(index,
-            duration: const Duration(milliseconds: 500), curve: Curves.linear);
+            duration: const Duration(milliseconds: 300), curve: Curves.linear);
       } else {
         /*Navigator.push(
             context,

@@ -1,34 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/utils/colors.dart';
-import 'package:ulearning_app/common/widgets/text_widgets.dart';
-
-/*
- PreferredSized widget gives you a height or space from the appbar downwards and we can put
- child into the given space.
-*/
-AppBar buildAppBar()  {
-  return AppBar(
-    bottom: PreferredSize(
-      preferredSize: const Size.fromHeight(1.0),
-      child: Container(
-        color: Colors.red,
-        height: 1.0,
-      ),
-    ),
-    title: text16Normal(
-      text: "Log In",
-      color: AppColors.primaryText,
-    ),
-  );
-}
 
 Widget thirdPartyLogin() {
   return Container(
     margin: EdgeInsets.only(
       left: 80.w,
       right: 80.w,
-      top: 40.h,
+      top: 20.h,
       bottom: 20.h,
     ),
     child: Row(
@@ -52,8 +30,4 @@ Widget _loginButton(String imagePath) {
       ),
     ),
   );
-}
-
-Widget appTextField(){
-  return Container();
 }

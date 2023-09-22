@@ -28,10 +28,8 @@ Widget text16Normal({
   );
 }
 
-Widget text14Normal({
-  String text = "",
-  Color color = AppColors.primaryThreeElementText
-}) {
+Widget text14Normal(
+    {String text = "", Color color = AppColors.primaryThreeElementText}) {
   return Text(
     text,
     textAlign: TextAlign.center,
@@ -39,6 +37,34 @@ Widget text14Normal({
       fontSize: 14.sp,
       color: color,
       fontWeight: FontWeight.bold,
+    ),
+  );
+}
+Widget text13Normal(
+    {String text = "", Color color = AppColors.primaryThreeElementText}) {
+  return Text(
+    text,
+    textAlign: TextAlign.start,
+    style: TextStyle(
+      fontSize: 13.sp,
+      color: color,
+      fontWeight: FontWeight.bold,
+    ),
+  );
+}
+
+Widget textUnderline({String text = ''}) {
+  return GestureDetector(
+    onTap: () {},
+    child: Text(
+      text,
+      style: TextStyle(
+        fontSize: 12.sp,
+        color: AppColors.primaryText,
+        fontWeight: FontWeight.normal,
+        decoration: TextDecoration.underline,
+        decorationColor: AppColors.primaryText,
+      ),
     ),
   );
 }

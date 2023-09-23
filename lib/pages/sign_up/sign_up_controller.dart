@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/widgets/popup_messages.dart';
 import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
@@ -7,7 +8,7 @@ class SignUpController {
 
   SignUpController({required this.ref});
 
-  void handleSignUp() {
+  Future<void> handleSignUp() async {
     var state = ref.read(registerNotifierProvider);
     String name = state.userName;
     String email = state.email;
@@ -40,6 +41,15 @@ class SignUpController {
     if (state.password != state.rePassword) {
       toastInfo("Your password did not match");
       return;
+    }
+
+    try {
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } catch (e) {
+      print(e);
     }
   }
 }

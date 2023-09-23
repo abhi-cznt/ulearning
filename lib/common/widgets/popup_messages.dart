@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-// positional optional parameter
 toastInfo(
   String msg, {
   Color textColor = Colors.black,

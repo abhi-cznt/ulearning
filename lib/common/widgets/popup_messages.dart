@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 toastInfo(
   String msg, {
-  Color textColor = Colors.black,
-  Color backgroundColor = Colors.red,
+  Color textColor = Colors.white,
+  Color backgroundColor = Colors.blue,
 }) {
   return Fluttertoast.showToast(
     msg: msg,

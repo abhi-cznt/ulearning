@@ -19,10 +19,12 @@ class SignUpController {
     String password = state.password;
     String rePassword = state.rePassword;
 
-    print("Your name is $name");
-    print("Your email is $email");
-    print("Your password is $password");
-    print("Your rePassword is $rePassword");
+    if (kDebugMode) {
+      print("Your name is $name");
+      print("Your email is $email");
+      print("Your password is $password");
+      print("Your rePassword is $rePassword");
+    }
 
     if (state.userName.isEmpty || name.isEmpty) {
       toastInfo("Your name is empty");
@@ -69,23 +71,22 @@ class SignUpController {
         //get user photo url
         //set user photo url
 
-
         toastInfo("An email has been sent to verify your account. "
             "Please open that email and confirm your identity.");
 
         context.pop();
       }
-    } catch (e) {
+    }on FirebaseAuthException catch (e) {
 
+      toastInfo(e.message.toString());
+    }catch(e){
       if (kDebugMode) {
         print("**sign_up_controller**");
         print('Error caught: $e');
       }
-      toastInfo(e.toString());
     }
 
     // hide the app loader
     ref.read(appLoaderProvider.notifier).setLoaderValue(false);
-
   }
 }

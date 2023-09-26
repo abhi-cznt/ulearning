@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_styles.dart';
 import 'package:ulearning_app/firebase_options.dart';
+import 'package:ulearning_app/pages/home_page.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
@@ -29,11 +30,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),*/
-      theme:AppTheme.appThemeData,
+      theme: AppTheme.appThemeData,
       routes: {
         '/': (context) => Welcome(),
         '/signIn': (context) => const SignIn(),
-        '/register':(context)=>const SignUp(),
+        '/register': (context) => const SignUp(),
+        '/homePage': (context) => const HomePage(),
       },
     );
   }

@@ -5,11 +5,10 @@ import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/utils/colors.dart';
 import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
-import 'package:ulearning_app/pages/sign_up/sign_up_controller.dart';
-
-import '../../common/widgets/app_bar.dart';
-import '../../common/widgets/textfield_widget.dart';
+import '../../../common/widgets/app_bar.dart';
+import '../../../common/widgets/textfield_widget.dart';
+import '../controller/sign_up_controller.dart';
+import '../provider/notifier/register_notifier.dart';
 
 class SignUp extends ConsumerWidget {
   const SignUp({super.key});
@@ -18,7 +17,6 @@ class SignUp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final regProvider = ref.watch(registerNotifierProvider);
     final loader = ref.watch(appLoaderProvider);
-
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -31,8 +29,8 @@ class SignUp extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 30.h),
-                      Center(
-                        child: text14Normal(
+                      const Center(
+                        child: Text14Normal(
                           text: 'Enter your details below & free',
                         ),
                       ),
@@ -41,6 +39,7 @@ class SignUp extends ConsumerWidget {
 
                       // username text field
                       appTextField(
+                        controller: SignUpController.userNameController,
                         text: "User name",
                         iconPath: "assets/icons/user.png",
                         hintText: "Enter your user name",
@@ -53,6 +52,7 @@ class SignUp extends ConsumerWidget {
 
                       // email text field
                       appTextField(
+                        controller: SignUpController.emailController,
                         text: "Email",
                         iconPath: "assets/icons/user.png",
                         hintText: "Enter your email address",
@@ -65,6 +65,7 @@ class SignUp extends ConsumerWidget {
 
                       // password text field
                       appTextField(
+                        controller: SignUpController.passwordController,
                         text: "Password",
                         iconPath: "assets/icons/lock.png",
                         hintText: "Enter Password",

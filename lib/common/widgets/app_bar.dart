@@ -18,7 +18,7 @@ AppBar buildAppBar({String title = "Log In"}) {
         height: 1.0,
       ),
     ),
-    title: text16Normal(
+    title: Text16Normal(
       text: title,
       color: AppColors.primaryText,
     ),

@@ -4,20 +4,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/widgets/popup_messages.dart';
-import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
+import '../provider/notifier/register_notifier.dart';
+import '../repo/sign_up_repo.dart';
 
 class SignUpController {
   late WidgetRef ref;
-
   SignUpController({required this.ref});
+
+  static  TextEditingController userNameController = TextEditingController();
+  static  TextEditingController emailController = TextEditingController();
+  static  TextEditingController passwordController = TextEditingController();
 
   Future<void> handleSignUp() async {
     var state = ref.read(registerNotifierProvider);
     String name = state.userName;
     String email = state.email;
-
     String password = state.password;
     String rePassword = state.rePassword;
+
+    userNameController.text = name;
+    emailController.text = email;
+    passwordController.text = password;
 
     if (kDebugMode) {
       print("Your name is $name");
@@ -55,10 +62,7 @@ class SignUpController {
     var context = Navigator.of(ref.context);
     try {
       final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+          await SignUpRepo.firebaseSignUp(email, password);
 
       if (kDebugMode) {
         print(credential);
@@ -74,7 +78,11 @@ class SignUpController {
         toastInfo("An email has been sent to verify your account. "
             "Please open that email and confirm your identity.");
 
+
         context.pop();
+        userNameController.text = '' ;
+        emailController.text = '';
+        passwordController.text = '';
       }
     }on FirebaseAuthException catch (e) {
 

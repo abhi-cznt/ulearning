@@ -2,9 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/pages/welcome/widgets.dart';
+import 'package:ulearning_app/features/welcome/view/widgets.dart';
+import '../provider/notifier/welcome_notifier.dart';
 
-import 'notifier/welcome_notifier.dart';
 
 // final indexProvider = StateProvider<int>((ref) => 0);
 
@@ -32,9 +32,9 @@ class Welcome extends ConsumerWidget {
                   controller: _controller,
                   children: [
                     //page one
-                    appOnBoardingPage(
-                      context,
-                      _controller,
+                    AppOnBoardingPage(
+                      context: context,
+                      controller: _controller,
                       imagePath: 'assets/images/reading.png',
                       title: 'First See Learning',
                       subTitle:
@@ -43,9 +43,9 @@ class Welcome extends ConsumerWidget {
 
                     ),
                     // page second
-                    appOnBoardingPage(
-                      context,
-                      _controller,
+                    AppOnBoardingPage(
+                      context:context,
+                      controller: _controller,
                       imagePath: 'assets/images/man.png',
                       title: 'Connect With Everyone',
                       subTitle:
@@ -54,9 +54,9 @@ class Welcome extends ConsumerWidget {
                     ),
 
                     // page third
-                    appOnBoardingPage(
-                      context,
-                      _controller,
+                    AppOnBoardingPage(
+                      context: context,
+                      controller: _controller,
                       imagePath: 'assets/images/boy.png',
                       title: 'Always Fascinated Learning',
                       subTitle:
